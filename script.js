@@ -104,9 +104,6 @@ words.forEach(d => {
 
 function init() {
     gridContainer.innerHTML = '';
-    // CSS Tarafındaki yeni boyutlara uyması için kutucuk boyutları 45px yapıldı
-    gridContainer.style.gridTemplateColumns = `repeat(${size}, 45px)`;
-    gridContainer.style.gridTemplateRows = `repeat(${size}, 45px)`;
 
     for (let i = 0; i < size * size; i++) {
         const cell = document.createElement('div');
