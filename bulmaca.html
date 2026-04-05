@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Anılar Bulmacası</title>
+    <title>Bulmaca | Bizim Hikayemiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,27 +12,25 @@
         <a href="bulmaca.html" class="active">Bulmaca</a>
     </nav>
 
-    <div class="container">
-        <h2>Anılar Bulmacası</h2>
+    <div class="puzzle-page">
+        <h2 style="font-weight: 200; letter-spacing: 5px; margin-bottom: 40px;">ANILAR BULMACASI</h2>
         
-        <div class="puzzle-layout">
-            <div class="grid" id="puzzleGrid"></div>
+        <div class="puzzle-container">
+            <div class="grid-wrapper">
+                <div class="grid" id="puzzleGrid"></div>
+            </div>
 
-            <div class="clues">
-                <h3>Yatay Sorular</h3>
-                <div id="yatayClues"></div>
-                <br>
-                <h3>Aşağıya Sorular</h3>
-                <div id="dikeyClues"></div>
+            <div class="clues-panel">
+                <h3>SORULAR</h3>
+                <div class="clue-list" id="clueList"></div>
             </div>
         </div>
 
         <div class="secret-section">
-            <div class="secret-wrapper">
-                <div class="word" id="w1"></div>
-                <div class="space"></div>
-                <div class="word" id="w2"></div>
-                <div class="space"></div>
+            <p style="font-size: 0.7rem; letter-spacing: 3px; color: #ff4d4d;">GİZLİ MESAJ</p>
+            <div class="secret-wrapper" id="secretArea">
+                <div class="word" id="w1"></div><div class="space"></div>
+                <div class="word" id="w2"></div><div class="space"></div>
                 <div class="word" id="w3"></div>
             </div>
         </div>

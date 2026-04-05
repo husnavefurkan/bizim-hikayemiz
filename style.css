@@ -1,11 +1,11 @@
-/* style.css */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
 body { background: #0a0a0a; color: #ffffff; overflow-x: hidden; }
 
+/* NAVİGASYON */
 nav {
-    position: fixed; top: 0; width: 100%; padding: 20px;
+    position: fixed; top: 0; width: 100%; padding: 25px;
     display: flex; justify-content: center;
     background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(15px);
     z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -13,48 +13,34 @@ nav {
 nav a { color: #666; text-decoration: none; margin: 0 15px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
 nav a.active { color: #ff4d4d; }
 
-.container { padding: 100px 20px 40px; max-width: 1200px; margin: 0 auto; text-align: center; }
+/* ANASAYFA (TAM İSTEDİĞİN GİBİ) */
+.hero { height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
+.hero h1 { font-size: 3.5rem; font-weight: 200; letter-spacing: 12px; text-transform: uppercase; margin-bottom: 10px; }
+.hero p { font-weight: 200; color: #888; letter-spacing: 4px; }
 
-/* BULMACA ALANI */
-.puzzle-layout {
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 30px;
-}
+/* BULMACA SAYFASI DÜZENİ */
+.puzzle-page { padding: 120px 20px 40px; display: flex; flex-direction: column; align-items: center; }
+.puzzle-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; width: 100%; max-width: 1300px; }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(25, 25px); /* 25x25 daha ferah bir yapı sağlar */
-    gap: 1px;
-    background: #222; /* Izgara çizgileri */
-    padding: 2px;
-    border: 1px solid #444;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-}
-
+/* IZGARA (GRID) */
+.grid-wrapper { overflow: auto; background: #111; padding: 10px; border-radius: 8px; border: 1px solid #222; }
+.grid { display: grid; grid-template-columns: repeat(26, 25px); gap: 1px; background: #222; }
 .cell { width: 25px; height: 25px; background: #0d0d0d; position: relative; }
-.cell input {
-    width: 100%; height: 100%; background: transparent; border: none;
-    text-align: center; color: #fff; font-size: 14px; outline: none; text-transform: uppercase;
-}
-.cell .num { position: absolute; top: 1px; left: 1px; font-size: 7px; color: #ff4d4d; font-weight: bold; }
-.cell.pink { background: rgba(255, 77, 77, 0.15); }
+.cell input { width: 100%; height: 100%; background: transparent; border: none; text-align: center; color: #fff; font-size: 14px; outline: none; text-transform: uppercase; }
+.cell .num { position: absolute; top: 1px; left: 1px; font-size: 7px; color: #ff4d4d; font-weight: bold; pointer-events: none; }
+.cell.pink { background: rgba(255, 77, 77, 0.3) !important; }
 
-/* SORULAR LİSTESİ */
-.clues {
-    text-align: left; max-width: 350px; background: rgba(255,255,255,0.02);
-    padding: 20px; border-radius: 10px; height: 650px; overflow-y: auto;
-}
-.clues h3 { font-weight: 400; color: #ff4d4d; margin-bottom: 15px; font-size: 1rem; border-bottom: 1px solid #333; padding-bottom: 5px; }
-.clue-item { font-size: 0.75rem; margin-bottom: 8px; color: #bbb; display: flex; gap: 10px; }
+/* SORULAR PENCERESİ */
+.clues-panel { width: 350px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 12px; height: fit-content; text-align: left; border: 1px solid #222; }
+.clues-panel h3 { font-weight: 400; color: #ff4d4d; margin-bottom: 15px; font-size: 0.9rem; letter-spacing: 1px; border-bottom: 1px solid #333; padding-bottom: 8px; }
+.clue-list { max-height: 500px; overflow-y: auto; }
+.clue-item { font-size: 0.75rem; margin-bottom: 10px; color: #aaa; display: flex; gap: 8px; line-height: 1.4; }
 .clue-item b { color: #fff; min-width: 20px; }
 
 /* ŞİFRE ALANI */
-.secret-section { margin-top: 40px; border-top: 1px solid #222; padding-top: 30px; }
-.secret-wrapper { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-.word { display: flex; gap: 4px; }
-.space { width: 20px; }
-.msg-box {
-    width: 35px; height: 45px; border-bottom: 2px solid #333;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.5rem; color: #ff4d4d; font-weight: 600;
-}
+.secret-section { margin-top: 50px; text-align: center; width: 100%; }
+.secret-wrapper { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
+.word { display: flex; gap: 5px; }
+.space { width: 25px; }
+.msg-box { width: 35px; height: 45px; border-bottom: 2px solid #333; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #ff4d4d; }
 .msg-box.filled { border-bottom: 2px solid #ff4d4d; color: #fff; text-shadow: 0 0 10px #ff4d4d; }
