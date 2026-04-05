@@ -1,10 +1,10 @@
-const size = 26; // 26x26 Güvenli Boyut
+const size = 26; 
 const gridContainer = document.getElementById('puzzleGrid');
 const clueList = document.getElementById('clueList');
 
 function toUpperTR(str) { return str.toLocaleUpperCase('tr-TR'); }
 
-// ÇAKIŞMAYAN GÜVENLİ KOORDİNATLAR
+// 37 SORU, CEVAP VE KESİN KOORDİNATLAR
 const words = [
     { n: 1, r: 1, c: 2, w: "SEKİZŞUBAT", d: 1, q: "Sevgili olduğumuz tarih (gün/ay)" },
     { n: 2, r: 1, c: 20, w: "İMEJE", d: 1, q: "Bizim yarışma takımımızın adı" },
@@ -45,7 +45,7 @@ const words = [
     { n: 37, r: 25, c: 13, w: "AŞKIM", d: 0, q: "Senin bana kullandığın tabir" }
 ];
 
-// İYİ Kİ BENİMLESİN (15 Harf) ŞİFRESİ İÇİN KESİN KOORDİNAT HARİTASI
+// İYİ Kİ BENİMLESİN (15 Harf) ŞİFRESİ KOORDİNAT HARİTASI
 const pinkMap = {
     '3,6': 1,   // İ (PEKTABİİ)
     '13,2': 2,  // Y (MEYDAN)
