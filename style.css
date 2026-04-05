@@ -25,17 +25,17 @@ nav a:hover, nav a.active { color: #ff4d4d; text-shadow: 0 0 10px rgba(255, 77, 
 .puzzle-layout { display: flex; justify-content: center; gap: 40px; width: 100%; margin-top: 30px; }
 
 /* BULMACA IZGARASI (KESİN SABİTLENMİŞ YAPI) */
-.grid-container { background: #111; padding: 20px; border-radius: 12px; border: 1px solid #222; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
+.grid-container { background: #111; padding: 15px; border-radius: 12px; border: 1px solid #222; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
 .grid { 
     display: grid; 
-    grid-template-columns: repeat(27, 40px); /* 35px yerine 40px yapıldı */
-    grid-template-rows: repeat(27, 40px);    /* 35px yerine 40px yapıldı */
+    grid-template-columns: repeat(27, 32px); /* 35px yerine 40px yapıldı */
+    grid-template-rows: repeat(27, 32px);    /* 35px yerine 40px yapıldı */
     gap: 1px; /* Çizgilerin (mesafenin) kalınlığı. İstersen 0.5px de yapabilirsin */ 
     background: #333; 
 }
-.cell { width: 40px; height: 40px; background: #0d0d0d; position: relative; display: flex; align-items: center; justify-content: center; } /* 40px yapıldı */
-.cell input { width: 100%; height: 100%; background: transparent; border: none; text-align: center; color: #fff; font-size: 20px; outline: none; font-weight: 600; text-transform: uppercase; cursor: text; } /* Kutu büyüdüğü için yazı 16'dan 20'ye çıkarıldı */
-.cell .num { position: absolute; top: 1px; left: 2px; font-size: 15px; color: #ff4d4d; font-weight: bold; pointer-events: none; }
+.cell { width: 32px; height: 32px; background: #0d0d0d; position: relative; display: flex; align-items: center; justify-content: center; } /* 40px yapıldı */
+.cell input { width: 100%; height: 100%; background: transparent; border: none; text-align: center; color: #fff; font-size: 18px; outline: none; font-weight: 600; text-transform: uppercase; cursor: text; } /* Kutu büyüdüğü için yazı 16'dan 20'ye çıkarıldı */
+.cell .num { position: absolute; top: 1px; left: 2px; font-size: 12px; color: #ff4d4d; font-weight: bold; pointer-events: none; }
 .cell.pink { background: rgba(255, 77, 77, 0.25) !important; }
 
 /* SORULAR PANELİ */
