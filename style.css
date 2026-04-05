@@ -28,8 +28,8 @@ nav a:hover, nav a.active { color: #ff4d4d; text-shadow: 0 0 10px rgba(255, 77, 
 .grid-container { background: #111; padding: 20px; border-radius: 12px; border: 1px solid #222; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
 .grid { 
     display: grid; 
-    grid-template-columns: repeat(35, 28px); /* KESİN 35 SÜTUN */
-    grid-template-rows: repeat(35, 28px);    /* KESİN 35 SATIR */
+    grid-template-columns: repeat(27, 28px); /* KESİN 27 SÜTUN */
+    grid-template-rows: repeat(27, 28px);    /* KESİN 27 SATIR */
     gap: 1px; background: #333; 
 }
 .cell { width: 28px; height: 28px; background: #0d0d0d; position: relative; display: flex; align-items: center; justify-content: center; }
