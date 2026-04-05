@@ -6,14 +6,14 @@ body { background: #0a0a0a; color: #ffffff; overflow-x: hidden; }
 /* SADE NAVİGASYON */
 nav {
     position: fixed; top: 0; width: 100%; 
-    padding: 30px; /* 25px'ti, 30px yaptık. Bu menü bloğunu biraz daha geniş/kalın yapar */
+    padding: 41px; /* 25px'ti, 30px yaptık. Bu menü bloğunu biraz daha geniş/kalın yapar */
     display: flex; justify-content: center;
     background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(15px);
     z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 nav a { 
     color: #666; text-decoration: none; margin: 0 20px; 
-    font-size: 1rem; /* 0.85rem'di, 1rem (yaklaşık 16px) yaptık. Yazıları okunaklı ve şık bir şekilde büyütür */
+    font-size: 1.85rem; /* 0.85rem'di, 1rem (yaklaşık 16px) yaptık. Yazıları okunaklı ve şık bir şekilde büyütür */
     letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; 
 }
 nav a:hover, nav a.active { color: #ff4d4d; text-shadow: 0 0 10px rgba(255, 77, 77, 0.6); }
