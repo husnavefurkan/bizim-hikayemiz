@@ -14,15 +14,27 @@
 
     <div class="container">
         <h2>Anılar Bulmacası</h2>
-        <p style="font-size: 0.75rem; color: #888; margin-bottom: 20px;">Soruları görsellerden bakarak çöz, numaralı harfler şifreyi tamamlar!</p>
         
-        <div class="grid" id="puzzleGrid"></div>
+        <div class="puzzle-layout">
+            <div class="grid" id="puzzleGrid"></div>
+
+            <div class="clues">
+                <h3>Yatay Sorular</h3>
+                <div id="yatayClues"></div>
+                <br>
+                <h3>Aşağıya Sorular</h3>
+                <div id="dikeyClues"></div>
+            </div>
+        </div>
 
         <div class="secret-section">
             <div class="secret-wrapper">
-                <div class="word" id="w1"></div> <div class="space"></div>
-                <div class="word" id="w2"></div> <div class="space"></div>
-                <div class="word" id="w3"></div> </div>
+                <div class="word" id="w1"></div>
+                <div class="space"></div>
+                <div class="word" id="w2"></div>
+                <div class="space"></div>
+                <div class="word" id="w3"></div>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>

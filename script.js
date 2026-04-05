@@ -1,137 +1,131 @@
-// script.js
+const size = 25; // 25x25 Izgara
+const gridContainer = document.getElementById('puzzleGrid');
 
-// Türkçe büyük harf dönüşümü
+// TÜRKÇE İ DÜZELTMESİ
 function toTurkishUpper(str) {
     return str.toLocaleUpperCase('tr-TR');
 }
 
-const gridContainer = document.getElementById('puzzleGrid');
-const size = 21; // 21x21 Matris
-const totalCells = size * size;
-
-// GRID VERİSİ: [Kelime, BaşlangıçRow, BaşlangıçCol, Yön (0:Yatay, 1:Dikey), msgTarget]
+// GÖRSELDEKİ VERİLER (X, Y koordinatları ve Soru Metinleri)
 const words = [
-    // Yatay Kelimeler
-    { word: "PEKTABİİ", r: 3, c: 3, d: 0, msg: [null, null, null, null, null, null, 1, null] },
-    { word: "ERKENCİKUŞ", r: 5, c: 8, d: 0, msg: [null, null, null, null, null, null, 13, null, null, null] },
-    { word: "PİLAV", r: 8, c: 8, d: 0, msg: [null, null, null, null, null] },
-    { word: "FISTIĞIM", r: 12, c: 7, d: 0, msg: [null, 2, null, null, null, null, null, 10] },
-    { word: "MANGROV", r: 12, c: 14, d: 0, msg: [null, null, null, null, null, null, null] },
-    { word: "MEYDAN", r: 14, c: 0, d: 0, msg: [null, null, 14, null, null, null] },
-    { word: "ALİATAY", r: 16, c: 9, d: 0, msg: [null, null, null, null, null, null, null] },
-    { word: "BAVUL", r: 18, c: 16, d: 0, msg: [null, null, null, null, 12] },
-    { word: "DOĞUKAN", r: 19, c: 2, d: 0, msg: [null, null, null, null, null, null, null] },
-    { word: "HALBUKİ", r: 21, c: 7, d: 0, msg: [null, null, null, null, null, 11, null] },
-    { word: "MANGAL", r: 22, c: 14, d: 0, msg: [null, null, null, null, null, null] },
-    { word: "ÇAY", r: 23, c: 10, d: 0, msg: [null, null, null] },
-    { word: "TAŞDUVARLAR", r: 26, c: 12, d: 0, msg: [null, null, null, null, null, null, null, null, null, null, null] },
-    { word: "YALASAM", r: 28, c: 11, d: 0, msg: [null, null, null, null, null, null, null] },
-    { word: "NAZAR", r: 30, c: 13, d: 0, msg: [null, null, null, null, null] },
-    { word: "ZOOTOPİA", r: 31, c: 12, d: 0, msg: [null, null, null, null, null, null, null, 15] },
-    { word: "FENER", r: 32, c: 4, d: 0, msg: [null, null, 9, null, null] },
-    { word: "OYUNHAMURU", r: 34, c: 11, d: 0, msg: [null, null, null, null, null, null, null, null, null, null] },
-    { word: "AŞKIM", r: 37, c: 12, d: 0, msg: [null, null, null, null, null] },
+    // Yatay
+    { n: 3, r: 2, c: 1, w: "PEKTABİİ", d: 0, q: "Benim kullanmama güldüğün bir kelime", m: [null,null,null,null,null,null,1,null] },
+    { n: 5, r: 4, c: 8, w: "ERKENCİKUŞ", d: 0, q: "İlk başbaşa izlediğimiz dizi", m: [null,null,null,null,null,null,13,null,null,null] },
+    { n: 8, r: 7, c: 8, w: "PİLAV", d: 0, q: "Benim en sevdiğim yemek", m: [] },
+    { n: 12, r: 10, c: 6, w: "FISTIĞIM", d: 0, q: "Benim sana kullandığım tabir", m: [null,2,null,null,null,null,null,10] },
+    { n: 13, r: 10, c: 15, w: "MANGROV", d: 0, q: "Minecraft kırmızı kütüğün ismi", m: [] },
+    { n: 14, r: 12, c: 1, w: "MEYDAN", d: 0, q: "Seni ilk gördüğüm yer", m: [null,null,14,null,null,null] },
+    { n: 16, r: 14, c: 8, w: "ALİATAY", d: 0, q: "En sevdiğim oyuncu", m: [] },
+    { n: 18, r: 16, c: 13, w: "BAVUL", d: 0, q: "Otobüste neyim kaldı", m: [null,null,null,null,12] },
+    { n: 19, r: 18, c: 3, w: "DOĞUKAN", d: 0, q: "Bungalov işletmecisi", m: [] },
+    { n: 21, r: 18, c: 11, w: "HALBUKİ", d: 0, q: "Seni düşünürken dinlediğim şarkı", m: [null,null,null,null,null,11,null] },
+    { n: 22, r: 20, c: 13, w: "MANGAL", d: 0, q: "Birlikte yediğimiz ilk şey", m: [] },
+    { n: 23, r: 22, c: 6, w: "ÇAY", d: 0, q: "Vazgeçemediğimiz içecek", m: [] },
+    { n: 26, r: 23, c: 11, w: "TAŞDUVARLAR", d: 0, q: "Aşık olurken arka fonda çalan şarkı", m: [null,null,null,null,null,null,null,null,null,null,null] },
+    { n: 28, r: 25, c: 5, w: "YALASAM", d: 0, q: "Seni .... napabilirsin ki", m: [] },
+    { n: 30, r: 27, c: 7, w: "NAZAR", d: 0, q: "Arabamın ismi (...boncuğu)", m: [] },
+    { n: 31, r: 27, c: 14, w: "ZOOTOPİA", d: 0, q: "İlk birlikte izlediğimiz film", m: [null,null,null,null,null,null,null,15] },
+    { n: 32, r: 29, c: 2, w: "FENER", d: 0, q: "Beşirli sahilin sonunda nereye yürüdük", m: [null,null,9,null,null] },
+    { n: 34, r: 31, c: 8, w: "OYUNHAMURU", d: 0, q: "İlk aktivitemiz", m: [] },
+    { n: 37, r: 34, c: 10, w: "AŞKIM", d: 0, q: "Senin bana kullandığın tabir", m: [] },
 
-    // Dikey Kelimeler
-    { word: "SEKİZŞUBAT", r: 1, c: 4, d: 1, msg: [3, null, null, null, null, null, null, null, null, null] },
-    { word: "İMEJE", r: 2, c: 13, d: 1, msg: [null, null, null, null, null] },
-    { word: "BETÜL", r: 4, c: 11, d: 1, msg: [null, null, null, null, null] },
-    { word: "PAPATYA", r: 6, c: 10, d: 1, msg: [null, null, null, null, null, null, null] },
-    { word: "SWIFT", r: 7, c: 8, d: 1, msg: [null, null, null, null, null] },
-    { word: "GANİTA", r: 9, c: 15, d: 1, msg: [null, null, null, null, null, null] },
-    { word: "ÖFKE", r: 10, c: 0, d: 1, msg: [null, null, null, null] },
-    { word: "KOÇ", r: 11, c: 18, d: 1, msg: [null, null, null] },
-    { word: "YILDIZ", r: 15, c: 2, d: 1, msg: [null, null, null, null, null, null] },
-    { word: "AYNA", r: 17, c: 12, d: 1, msg: [null, null, null, null] },
-    { word: "BİM", r: 18, c: 16, d: 1, msg: [null, null, null] }, // Bavul ile çakışıyor
-    { word: "ANİME", r: 19, c: 7, d: 1, msg: [null, null, null, null, null] },
-    { word: "ÜLKESİ", r: 21, c: 7, d: 1, msg: [null, null, null, null, 5, null] }, // HalbuKi ile çakışıyor
-    { word: "BALARISI", r: 23, c: 10, d: 1, msg: [8, null, null, null, null, null, null, null] }, // Çay ile çakışıyor
-    { word: "KREMSANTİ", r: 25, c: 12, d: 1, msg: [null, null, null, null, null, null, null, null, null] }, // TaşDuvarlar ile çakışıyor
-    { word: "TEŞEKKÜR", r: 26, c: 12, d: 1, msg: [null, null, null, null, null, null, null, null] }, // TaşDuvarlar ile çakışıyor
-    { word: "TAZEBAHÇE", r: 29, c: 15, d: 1, msg: [null, null, null, null, null, null, null, null, null] }, // Nazar ile çakışıyor
-    { word: "ELBETTE", r: 32, c: 6, d: 1, msg: [null, null, null, null, null, null, 4] }, // Fener ile çakışıyor
-    { word: "NAZ", r: 37, c: 12, d: 1, msg: [null, null, 7] } // Aşkım ile çakışıyor
+    // Dikey
+    { n: 1, r: 1, c: 3, w: "SEKİZŞUBAT", d: 1, q: "Sevgili olduğumuz tarih (gün/ay)", m: [3,null,null,null,null,null,null,null,null,null] },
+    { n: 2, r: 1, c: 12, w: "İMEJE", d: 1, q: "Bizim yarışma takımımızın adı", m: [] },
+    { n: 4, r: 3, c: 10, w: "BETÜL", d: 1, q: "Bizi kim tanıştırdı", m: [] },
+    { n: 6, r: 5, c: 9, w: "PAPATYA", d: 1, q: "Senin ilk çiçeğin", m: [] },
+    { n: 7, r: 7, c: 6, w: "SWIFT", d: 1, q: "Ehliyet aldığın araba", m: [] },
+    { n: 9, r: 8, c: 14, w: "GANİTA", d: 1, q: "İlk başbaşa buluştuğumuz yer", m: [] },
+    { n: 10, r: 10, c: 0, w: "UTANDIRMANIN", d: 1, q: "Utandırmanın en garanti yolu", m: [] },
+    { n: 11, r: 11, c: 17, w: "KOÇ", d: 1, q: "Benim burcum", m: [] },
+    { n: 15, r: 13, c: 3, w: "NETHERSTAR", d: 1, q: "Wither ne düşürür", m: [] },
+    { n: 17, r: 14, c: 11, w: "AYNA", d: 1, q: "Yataktan senin neyin düştü", m: [] },
+    { n: 18, r: 16, c: 13, w: "BİM", d: 1, q: "Birlikte yürüyerek ne aramıştık", m: [] },
+    { n: 20, r: 18, c: 7, w: "YAZILIM", d: 1, q: "İlgi duyduğum bir alan", m: [] },
+    { n: 25, r: 22, c: 10, w: "PİLAV", d: 1, q: "Senin en sevdiğin yemek", m: [] },
+    { n: 27, r: 24, c: 12, w: "AY", d: 1, q: "İleride yazları gideceğimiz yer", m: [] },
+    { n: 29, r: 26, c: 14, w: "TOPUZ", d: 1, q: "Seni ilk gördüğümde saçın nasıldı", m: [] },
+    { n: 32, r: 29, c: 2, w: "FIRSTKISS", d: 1, q: "First kiss nerede oldu", m: [] },
+    { n: 36, r: 31, c: 13, w: "YANGIN", d: 1, q: "Yanan cafe ye benim söylediğim isim", m: [] }
 ];
 
-// Matrisi boş oluştur
-const gridMap = Array(totalCells).fill(null);
+const gridMap = Array(size * size).fill(null);
 
-// Kelimeleri matrise işle
-words.forEach(w => {
-    for (let i = 0; i < w.word.length; i++) {
-        const row = w.d === 0 ? w.r : w.r + i;
-        const col = w.d === 0 ? w.c + i : w.c;
-        if (row < size && col < size) {
-            const index = row * size + col;
-            const targetMsgId = (w.msg && w.msg[i]) ? w.msg[i] : null;
+function setupPuzzle() {
+    const yatayList = document.getElementById('yatayClues');
+    const dikeyList = document.getElementById('dikeyClues');
+
+    words.forEach(obj => {
+        // Listeye Soruyu Ekle
+        const clueEl = document.createElement('div');
+        clueEl.className = 'clue-item';
+        clueEl.innerHTML = `<b>${obj.n}.</b> ${obj.q}`;
+        if(obj.d === 0) yatayList.appendChild(clueEl);
+        else dikeyList.appendChild(clueEl);
+
+        // Grid'e Yerleştir
+        for (let i = 0; i < obj.w.length; i++) {
+            let row = obj.d === 0 ? obj.r : obj.r + i;
+            let col = obj.d === 0 ? obj.c + i : obj.c;
+            if(row >= size || col >= size) continue;
+            let idx = row * size + col;
             
-            // Eğer hücre doluysa msgTarget'ı güncelle (çakışmalar için)
-            if (gridMap[index]) {
-                if (targetMsgId) gridMap[index].msgTarget = targetMsgId;
-            } else {
-                gridMap[index] = { char: w.word[i], msgTarget: targetMsgId };
-            }
+            if(!gridMap[idx]) gridMap[idx] = { char: obj.w[i], num: (i===0 ? obj.n : null), msgId: (obj.m[i] || null) };
+            else if(obj.m[i]) gridMap[idx].msgId = obj.m[i]; // Çakışan hücrede şifre numarası varsa ekle
         }
-    }
-});
-
-// Şifre kutularını oluştur (İYİ Kİ BENİMLESİN - 15 Harf)
-function setupSecret() {
-    const w1 = [1, 2, 3], w2 = [4, 5], w3 = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-    w1.forEach(id => document.getElementById('w1').innerHTML += `<div class="msg-box" id="msg-${id}">?</div>`);
-    w2.forEach(id => document.getElementById('w2').innerHTML += `<div class="msg-box" id="msg-${id}">?</div>`);
-    w3.forEach(id => document.getElementById('w3').innerHTML += `<div class="msg-box" id="msg-${id}">?</div>`);
+    });
 }
 
-// Grid'i ekrana bas
 function initGrid() {
-    for (let i = 0; i < totalCells; i++) {
+    for (let i = 0; i < size * size; i++) {
         const cell = document.createElement('div');
         cell.className = 'cell';
         const item = gridMap[i];
 
         if (item) {
+            if (item.num) cell.innerHTML += `<span class="num">${item.num}</span>`;
+            if (item.msgId) {
+                cell.classList.add('pink');
+                cell.innerHTML += `<span class="num" style="left:auto; right:1px; color:#ff4d4d">${item.msgId}</span>`;
+            }
             const input = document.createElement('input');
             input.maxLength = 1;
             input.dataset.ans = item.char;
-
-            if (item.msgTarget) {
-                cell.classList.add('pink');
-                const numSpan = document.createElement('span');
-                numSpan.className = 'num';
-                numSpan.innerText = item.msgTarget;
-                cell.appendChild(numSpan);
-                input.dataset.target = item.msgTarget;
-            }
+            input.dataset.msg = item.msgId || "";
             cell.appendChild(input);
         } else {
             cell.style.background = "transparent";
+            cell.style.border = "none";
         }
         gridContainer.appendChild(cell);
     }
 }
 
-// Giriş dinleyici
+function setupSecret() {
+    const w1 = [1,2,3], w2 = [4,5], w3 = [6,7,8,9,10,11,12,13,14,15];
+    w1.forEach(id => document.getElementById('w1').innerHTML += `<div class="msg-box" id="msg-${id}">?</div>`);
+    w2.forEach(id => document.getElementById('w2').innerHTML += `<div class="msg-box" id="msg-${id}">?</div>`);
+    w3.forEach(id => document.getElementById('w3').innerHTML += `<div class="msg-box" id="msg-${id}">?</div>`);
+}
+
 gridContainer.addEventListener('input', (e) => {
     const input = e.target;
     const val = toTurkishUpper(input.value);
-    const correctAns = input.dataset.ans;
-    const targetId = input.dataset.target;
+    const ans = input.dataset.ans;
+    const msgId = input.dataset.msg;
 
-    if (val === correctAns) {
+    if (val === ans) {
         input.style.color = "#4dff88";
-        if (targetId) {
-            const msgBox = document.getElementById(`msg-${targetId}`);
-            if (msgBox) {
-                msgBox.innerText = val;
-                msgBox.classList.add('filled');
-            }
+        if (msgId) {
+            const box = document.getElementById(`msg-${msgId}`);
+            box.innerText = val;
+            box.classList.add('filled');
         }
     } else {
         input.style.color = "#ff4d4d";
     }
 });
 
-setupSecret();
+setupPuzzle();
 initGrid();
+setupSecret();
