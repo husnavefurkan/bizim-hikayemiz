@@ -2,7 +2,8 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Bulmaca | Bizim Hikayemiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anılar Bulmacası</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,10 +14,10 @@
     </nav>
 
     <div class="puzzle-page">
-        <h2 style="font-weight: 200; letter-spacing: 5px; margin-bottom: 40px;">ANILAR BULMACASI</h2>
+        <h2 style="font-weight: 200; letter-spacing: 5px; color: #fff;">ANILAR BULMACASI</h2>
         
-        <div class="puzzle-container">
-            <div class="grid-wrapper">
+        <div class="puzzle-layout">
+            <div class="grid-container">
                 <div class="grid" id="puzzleGrid"></div>
             </div>
 
@@ -27,10 +28,12 @@
         </div>
 
         <div class="secret-section">
-            <p style="font-size: 0.7rem; letter-spacing: 3px; color: #ff4d4d;">GİZLİ MESAJ</p>
+            <p style="font-size: 0.8rem; letter-spacing: 4px; color: #ff4d4d;">GİZLİ MESAJ</p>
             <div class="secret-wrapper" id="secretArea">
-                <div class="word" id="w1"></div><div class="space"></div>
-                <div class="word" id="w2"></div><div class="space"></div>
+                <div class="word" id="w1"></div>
+                <div class="space"></div>
+                <div class="word" id="w2"></div>
+                <div class="space"></div>
                 <div class="word" id="w3"></div>
             </div>
         </div>
