@@ -2,21 +2,18 @@ const size = 26; // 26x26 Güvenli Boyut
 const gridContainer = document.getElementById('puzzleGrid');
 const clueList = document.getElementById('clueList');
 
-// Grid sütun sayısını JS'den CSS'e zorla gönderiyoruz ki ASLA kayma yapmasın
-gridContainer.style.gridTemplateColumns = `repeat(${size}, 25px)`;
-
 function toUpperTR(str) { return str.toLocaleUpperCase('tr-TR'); }
 
 // ÇAKIŞMAYAN GÜVENLİ KOORDİNATLAR
 const words = [
     { n: 1, r: 1, c: 2, w: "SEKİZŞUBAT", d: 1, q: "Sevgili olduğumuz tarih (gün/ay)" },
     { n: 2, r: 1, c: 20, w: "İMEJE", d: 1, q: "Bizim yarışma takımımızın adı" },
-    { n: 3, r: 3, c: 0, w: "PEKTABİİ", d: 0, q: "Benim kullanmama güldüğün bir kelime" }, // K'de 1 ile kesişir (3,2)
+    { n: 3, r: 3, c: 0, w: "PEKTABİİ", d: 0, q: "Benim kullanmama güldüğün bir kelime" }, 
     { n: 4, r: 1, c: 12, w: "BETÜL", d: 1, q: "Bizi kim tanıştırdı" },
     { n: 5, r: 7, c: 12, w: "ERKENCİKUŞ", d: 0, q: "İlk başbaşa izlediğimiz dizi" },
     { n: 6, r: 5, c: 5, w: "PAPATYA", d: 1, q: "Senin ilk çiçeğin" },
     { n: 7, r: 5, c: 8, w: "SWIFT", d: 1, q: "Ehliyet aldığın araba (suzuki ...)" },
-    { n: 8, r: 5, c: 5, w: "PİLAV", d: 0, q: "Benim en sevdiğim yemek" }, // P'de 6 ile kesişir (5,5)
+    { n: 8, r: 5, c: 5, w: "PİLAV", d: 0, q: "Benim en sevdiğim yemek" }, 
     { n: 9, r: 8, c: 18, w: "GANİTA", d: 1, q: "İlk başbaşa buluştuğumuz yer" },
     { n: 10, r: 8, c: 22, w: "ÖVMEK", d: 1, q: "Utandırmanın en garanti yolu (ortak özellik)" },
     { n: 11, r: 8, c: 25, w: "KOÇ", d: 1, q: "Benim burcum" },
@@ -43,8 +40,8 @@ const words = [
     { n: 32, r: 25, c: 0, w: "FENER", d: 0, q: "Beşirli sahilin sonunda nereye yürüdük" },
     { n: 33, r: 19, c: 7, w: "ELBETTE", d: 1, q: "Benim kullanmama güldüğün bir kelime" },
     { n: 34, r: 20, c: 8, w: "OYUNHAMURU", d: 0, q: "İlk aktivitemiz" },
-    { n: 35, r: 20, c: 12, w: "HAZAN", d: 1, q: "Benim sürekli gidelim dediğim yer (...bahçe)" }, // H'de 34 ile kesişir (20,12)
-    { n: 36, r: 20, c: 14, w: "MEŞK", d: 1, q: "Yanan cafe ye benim söylediğim isim" }, // M'de 34 ile kesişir (20,14)
+    { n: 35, r: 20, c: 12, w: "HAZAN", d: 1, q: "Benim sürekli gidelim dediğim yer (...bahçe)" }, 
+    { n: 36, r: 20, c: 14, w: "MEŞK", d: 1, q: "Yanan cafe ye benim söylediğim isim" }, 
     { n: 37, r: 25, c: 13, w: "AŞKIM", d: 0, q: "Senin bana kullandığın tabir" }
 ];
 
