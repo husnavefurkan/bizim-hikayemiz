@@ -1,4 +1,4 @@
-const size = 26; 
+const size = 35; 
 const gridContainer = document.getElementById('puzzleGrid');
 const clueList = document.getElementById('clueList');
 
