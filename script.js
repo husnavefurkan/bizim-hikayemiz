@@ -6,7 +6,7 @@ function toUpperTR(str) { return str.toLocaleUpperCase('tr-TR'); }
 
 // 37 SORU, CEVAP VE KESİN KOORDİNATLAR
 const words = [
-    { n: 1, r: 1, c: 10, w: "SEKİZŞUBAT", d: 1, q: "Sevgili olduğumuz tarih (gün/ay)" },
+    { n: 1, r: 2, c: 10, w: "SEKİZŞUBAT", d: 1, q: "Sevgili olduğumuz tarih (gün/ay)" },
     { n: 2, r: 2, c: 8, w: "İMEJE", d: 0, q: "Bizim yarışma takımımızın adı" },
     { n: 3, r: 3, c: 8, w: "PEKTABİİ", d: 0, q: "Benim kullanmama güldüğün bir kelime" }, 
     { n: 4, r: 8, c: 10, w: "BETÜL", d: 0, q: "Bizi kim tanıştırdı" },
