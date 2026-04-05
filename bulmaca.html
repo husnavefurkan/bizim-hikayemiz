@@ -2,7 +2,6 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anılar Bulmacası</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,15 +11,16 @@
         <a href="timeline.html">Zaman Tüneli</a>
         <a href="bulmaca.html" class="active">Bulmaca</a>
     </nav>
+
     <div class="container">
-        <h2>Anılarımızı Çöz</h2>
+        <h2 style="font-weight: 200; margin-bottom: 10px;">Çengel Bulmaca</h2>
         <div class="grid" id="puzzleGrid"></div>
+
         <div class="secret-section">
-            <p style="letter-spacing: 3px; font-size: 0.7rem; color: #ff4d4d;">GİZLİ MESAJ</p>
-            <div class="secret-wrapper" id="secretArea">
-                <div class="word" id="word1"></div> <div class="space"></div>
-                <div class="word" id="word2"></div> <div class="space"></div>
-                <div class="word" id="word3"></div> </div>
+            <div class="secret-wrapper">
+                <div class="word" id="w1"></div> <div class="space"></div>
+                <div class="word" id="w2"></div> <div class="space"></div>
+                <div class="word" id="w3"></div> </div>
         </div>
     </div>
     <script src="script.js"></script>
