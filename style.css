@@ -20,10 +20,10 @@ nav a:hover, nav a.active { color: #ff4d4d; text-shadow: 0 0 10px rgba(255, 77, 
 
 /* ANASAYFA VE ROMANTİK METİN */
 .hero { height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 0 20px; }
-.hero h1 { font-size: 4rem; font-weight: 200; letter-spacing: 15px; text-transform: uppercase; margin-bottom: 30px; animation: fadeInDown 2s; }
+.hero h1 { font-size: 4.5rem; font-weight: 200; letter-spacing: 15px; text-transform: uppercase; margin-bottom: 30px; animation: fadeInDown 2s; }
 .romantic-text { max-width: 800px; animation: fadeInUp 2.5s; }
-.romantic-text p { font-weight: 300; color: #aaa; font-size: 1.1rem; line-height: 1.8; letter-spacing: 1px; margin-bottom: 15px; }
-.romantic-text p.highlight { color: #ff4d4d; font-size: 1.3rem; font-weight: 400; margin-top: 30px; letter-spacing: 2px; }
+.romantic-text p { font-weight: 300; color: #aaa; font-size: 1.3rem; line-height: 1.8; letter-spacing: 1px; margin-bottom: 15px; }
+.romantic-text p.highlight { color: #ff4d4d; font-size: 1.5rem; font-weight: 400; margin-top: 30px; letter-spacing: 2px; }
 
 /* BULMACA SAYFASI GENEL */
 .puzzle-page { padding: 130px 20px 60px; display: flex; flex-direction: column; align-items: center; width: 100%; min-width: 1200px; /* Ekranı daraltmaya izin vermez */ }
