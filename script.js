@@ -65,6 +65,8 @@ const pinkDefinitions = [
     { w: 34, i: 3, msg: 15 }  // N (OYUNHAMURU - 4. Harf)
 ];
 
+// --- KENDİ CONST WORDS VE PINKDEFINITIONS DİZİLERİN BURANIN ÜSTÜNDE KALSIN ---
+
 const pinkMap = {};
 words.forEach(d => {
     pinkDefinitions.forEach(p => {
@@ -79,11 +81,9 @@ words.forEach(d => {
 const grid = Array(size * size).fill(null);
 
 words.forEach(d => {
-    // Listeye Ekle
     const dirTxt = d.d === 0 ? "Yatay" : "Aşağı";
     clueList.innerHTML += `<div class="clue-item"><b>${d.n}.</b> [${dirTxt}] ${d.q}</div>`;
     
-    // Grid'e Ekle
     for (let i = 0; i < d.w.length; i++) {
         const row = d.d === 0 ? d.r : d.r + i;
         const col = d.d === 0 ? d.c + i : d.c;
@@ -103,11 +103,10 @@ words.forEach(d => {
 });
 
 function init() {
-    // Daha önceki tablo içeriğini temizleyelim
     gridContainer.innerHTML = '';
-    // CSS tarafında var olan grid ayarını dinamik olarak yeni boyuta güncelle
-    gridContainer.style.gridTemplateColumns = `repeat(${size}, 35px)`;
-    gridContainer.style.gridTemplateRows = `repeat(${size}, 35px)`;
+    // CSS Tarafındaki yeni boyutlara uyması için kutucuk boyutları 45px yapıldı
+    gridContainer.style.gridTemplateColumns = `repeat(${size}, 45px)`;
+    gridContainer.style.gridTemplateRows = `repeat(${size}, 45px)`;
 
     for (let i = 0; i < size * size; i++) {
         const cell = document.createElement('div');
@@ -119,6 +118,7 @@ function init() {
             const input = document.createElement('input');
             input.maxLength = 1;
             input.dataset.ans = item.char;
+            input.dataset.idx = i; // Otomatik kaydırma için index eklendi
             
             if (item.msgId) {
                 cell.classList.add('pink');
@@ -133,7 +133,6 @@ function init() {
         gridContainer.appendChild(cell);
     }
 
-    // Şifre Kutularını başlat
     const w1 = [1, 2, 3], w2 = [4, 5], w3 = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
     document.getElementById('w1').innerHTML = '';
     document.getElementById('w2').innerHTML = '';
@@ -144,6 +143,32 @@ function init() {
     w3.forEach(id => document.getElementById('w3').innerHTML += `<div class="msg-box" id="msg-${id}">?</div>`);
 }
 
+// OTOMATİK KAYDIRMA VE GEZİNME MANTIĞI
+let currentDir = 0; // 0: sağa (yatay), 1: aşağı (dikey)
+
+function focusNext(targetIdx) {
+    if (targetIdx >= 0 && targetIdx < size * size) {
+        const nextInput = document.querySelector(`input[data-idx="${targetIdx}"]`);
+        if (nextInput) {
+            nextInput.focus();
+            nextInput.select();
+        }
+    }
+}
+
+gridContainer.addEventListener('keydown', (e) => {
+    if (e.target.tagName.toLowerCase() !== 'input') return;
+    const idx = parseInt(e.target.dataset.idx);
+
+    if (e.key === 'ArrowRight') { currentDir = 0; focusNext(idx + 1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft') { currentDir = 0; focusNext(idx - 1); e.preventDefault(); }
+    else if (e.key === 'ArrowDown') { currentDir = 1; focusNext(idx + size); e.preventDefault(); }
+    else if (e.key === 'ArrowUp') { currentDir = 1; focusNext(idx - size); e.preventDefault(); }
+    else if (e.key === 'Backspace' && e.target.value === '') {
+        focusNext(currentDir === 0 ? idx - 1 : idx - size);
+    }
+});
+
 gridContainer.addEventListener('input', (e) => {
     const input = e.target;
     if (input.tagName.toLowerCase() !== 'input') return;
@@ -151,7 +176,9 @@ gridContainer.addEventListener('input', (e) => {
     const val = toUpperTR(input.value);
     const ans = input.dataset.ans;
     const mid = input.dataset.msg;
+    const idx = parseInt(input.dataset.idx);
     
+    // Doğruluk Kontrolü
     if (val === ans) {
         input.style.color = "#4dff88"; 
         if (mid) {
@@ -161,6 +188,24 @@ gridContainer.addEventListener('input', (e) => {
         }
     } else { 
         input.style.color = "#ff4d4d"; 
+    }
+
+    // Harf girildiyse otomatik sonrakine geç
+    if (val !== "") {
+        let nextIdx = currentDir === 0 ? idx + 1 : idx + size;
+        let nextInput = document.querySelector(`input[data-idx="${nextIdx}"]`);
+        
+        if (nextInput) {
+            nextInput.focus();
+        } else {
+            // İleride kutu yoksa (kelime bittiyse), diğer yöne dönmeyi dene (Kesişimler için)
+            nextIdx = currentDir === 0 ? idx + size : idx + 1;
+            nextInput = document.querySelector(`input[data-idx="${nextIdx}"]`);
+            if (nextInput) {
+                currentDir = currentDir === 0 ? 1 : 0; 
+                nextInput.focus();
+            }
+        }
     }
 });
 
