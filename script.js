@@ -6,9 +6,9 @@ function toUpperTR(str) { return str.toLocaleUpperCase('tr-TR'); }
 
 // 37 SORU, CEVAP VE RESME GÖRE HESAPLANMIŞ KESİN KOORDİNATLAR
 const words = [
-    { n: 1, r: 1, c: 1, w: "SEKİZŞUBAT", d: 1, q: "Sevgili olduğumuz tarih (gün/ay)" },
+    { n: 1, r: 1, c: 4, w: "SEKİZŞUBAT", d: 1, q: "Sevgili olduğumuz tarih (gün/ay)" },
     { n: 2, r: 2, c: 12, w: "İMEJE", d: 1, q: "Bizim yarışma takımımızın adı" },
-    { n: 3, r: 2, c: 0, w: "PEKTABİİ", d: 0, q: "Benim kullanmama güldüğün bir kelime" }, 
+    { n: 3, r: 2, c: 3, w: "PEKTABİİ", d: 0, q: "Benim kullanmama güldüğün bir kelime" }, 
     { n: 4, r: 3, c: 9, w: "BETÜL", d: 1, q: "Bizi kim tanıştırdı" },
     { n: 5, r: 4, c: 6, w: "ERKENCİKUŞ", d: 0, q: "İlk başbaşa izlediğimiz dizi" },
     { n: 6, r: 7, c: 7, w: "PAPATYA", d: 1, q: "Senin ilk çiçeğin" },
