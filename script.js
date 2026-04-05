@@ -7,11 +7,11 @@ function toUpperTR(str) { return str.toLocaleUpperCase('tr-TR'); }
 // 37 SORU, CEVAP VE RESME GÖRE HESAPLANMIŞ KESİN KOORDİNATLAR
 const words = [
     { n: 1, r: 1, c: 5, w: "SEKİZŞUBAT", d: 1, q: "Sevgili olduğumuz tarih (gün/ay)" },
-    { n: 2, r: 2, c: 13, w: "İMEJE", d: 1, q: "Bizim yarışma takımımızın adı" },
+    { n: 2, r: 1, c: 16, w: "İMEJE", d: 1, q: "Bizim yarışma takımımızın adı" },
     { n: 3, r: 2, c: 4, w: "PEKTABİİ", d: 0, q: "Benim kullanmama güldüğün bir kelime" }, 
-    { n: 4, r: 3, c: 10, w: "BETÜL", d: 1, q: "Bizi kim tanıştırdı" },
-    { n: 5, r: 4, c: 7, w: "ERKENCİKUŞ", d: 0, q: "İlk başbaşa izlediğimiz dizi" },
-    { n: 6, r: 7, c: 8, w: "PAPATYA", d: 1, q: "Senin ilk çiçeğin" },
+    { n: 4, r: 2, c: 13, w: "BETÜL", d: 1, q: "Bizi kim tanıştırdı" },
+    { n: 5, r: 3, c: 12, w: "ERKENCİKUŞ", d: 0, q: "İlk başbaşa izlediğimiz dizi" },
+    { n: 6, r: 4, c: 11, w: "PAPATYA", d: 1, q: "Senin ilk çiçeğin" },
     { n: 7, r: 9, c: 6, w: "SWIFT", d: 1, q: "Ehliyet aldığın araba (suzuki ...)" },
     { n: 8, r: 7, c: 8, w: "PİLAV", d: 0, q: "Benim en sevdiğim yemek" }, 
     { n: 9, r: 8, c: 9, w: "GANİTA", d: 1, q: "İlk başbaşa buluştuğumuz yer" },
