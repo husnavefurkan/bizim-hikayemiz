@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Hikayemize Giriş</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+
+    <div class="login-container">
+        <h2>BİZİM HİKAYEMİZ</h2>
+        <p>İçeri girmek için o özel tarihi tuşla...<br><span style="font-size: 0.8rem; color: #666;">(Örn: 08.02 veya 0802)</span></p>
+        
+        <input type="text" id="passwordInput" placeholder="GG.AA" autocomplete="off">
+        <button onclick="checkPassword()">Kilidi Aç</button>
+        
+        <p id="errorMsg" class="error-msg">Yanlış tarih, biraz daha düşün sevgilim...</p>
+    </div>
+
+    <script>
+        // Enter tuşuna basıldığında da butona tıklanmış gibi çalışsın
+        document.getElementById("passwordInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                checkPassword();
+            }
+        });
+
+        function checkPassword() {
+            const pass = document.getElementById('passwordInput').value.trim();
+            
+            // KABUL EDİLECEK ŞİFRELER (Burayı kendi tarihine göre düzenle)
+            if(pass === "08.02" || pass === "0802" || pass === "8 Şubat") {
+                // Şifre doğruysa tarayıcıya "kilit açıldı" bilgisini kaydet
+                sessionStorage.setItem('siteUnlocked', 'true');
+                // Ana sayfaya yönlendir
+                window.location.href = "index.html"; 
+            } else {
+                // Şifre yanlışsa hata mesajını göster
+                document.getElementById('errorMsg').style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>

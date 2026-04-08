@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>Bizim Hikayemiz</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Eğer site kilidi açılmadıysa, kişiyi zorla login.html'e geri gönder
+        if (sessionStorage.getItem('siteUnlocked') !== 'true') {
+            window.location.href = "login.html";
+        }
+    </script>
 </head>
 <body>
     <nav>

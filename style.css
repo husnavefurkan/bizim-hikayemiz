@@ -135,3 +135,87 @@ nav a:hover, nav a.active { color: #ff4d4d; text-shadow: 0 0 10px rgba(255, 77, 
     letter-spacing: 1px;
     text-shadow: none;
 }
+
+/* GİRİŞ EKRANI (LOGIN) TASARIMI */
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #0a0a0a;
+    overflow: hidden;
+}
+
+.login-container {
+    text-align: center;
+    background: rgba(17, 17, 17, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 60px 50px;
+    border-radius: 15px;
+    border: 1px solid #333;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 1s ease;
+}
+
+.login-container h2 {
+    font-weight: 200;
+    letter-spacing: 8px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.login-container p {
+    color: #aaa;
+    margin-bottom: 35px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.login-container input {
+    display: block;
+    margin: 0 auto 25px;
+    padding: 15px;
+    width: 220px;
+    text-align: center;
+    font-size: 1.5rem;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #444;
+    color: #ff4d4d;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+    letter-spacing: 3px;
+}
+
+.login-container input:focus {
+    border-color: #ff4d4d;
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.2);
+}
+
+.login-container button {
+    padding: 15px 40px;
+    font-size: 1rem;
+    background: transparent;
+    color: #ff4d4d;
+    border: 1px solid #ff4d4d;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transition: all 0.3s ease;
+}
+
+.login-container button:hover {
+    background: #ff4d4d;
+    color: #fff;
+    box-shadow: 0 5px 20px rgba(255, 77, 77, 0.4);
+}
+
+.error-msg {
+    color: #ff4d4d !important;
+    display: none;
+    margin-top: 20px !important;
+    margin-bottom: 0 !important;
+    font-size: 0.9rem;
+    animation: fadeInDown 0.3s ease;
+}

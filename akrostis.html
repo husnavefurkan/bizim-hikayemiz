@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>Akrostiş - Hüsna</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Eğer site kilidi açılmadıysa, kişiyi zorla login.html'e geri gönder
+        if (sessionStorage.getItem('siteUnlocked') !== 'true') {
+            window.location.href = "login.html";
+        }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
