@@ -85,13 +85,14 @@
                     grid.innerHTML = '<p style="color:#aaa;">Henüz buraya bir anı eklenmemiş, hadi Drive klasörüne bir fotoğraf yükleyelim!</p>';
                     return;
                 }
-
                 fotolar.forEach(foto => {
-                    // Artık karmaşık uc?export linkine gerek yok, foto.url direkt uyumlu resmi veriyor
+                    // İŞTE SİHİRLİ LİNK: Google'dan bu resmin max 1000px genişliğinde web uyumlu halini istiyoruz
+                    const imgUrl = `https://drive.google.com/thumbnail?id=${foto.id}&sz=w1000`;
+                    
                     const card = document.createElement('div');
                     card.className = 'photo-card';
                     card.innerHTML = `
-                        <img src="${foto.url}" alt="${foto.name}">
+                        <img src="${imgUrl}" alt="${foto.name}">
                         <p>Anılarımızdan biri</p>
                     `;
                     grid.appendChild(card);
