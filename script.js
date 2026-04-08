@@ -42,7 +42,8 @@ const words = [
     { n: 34, r: 20, c: 9, w: "OYUNHAMURU", d: 0, q: "İlk aktivitemiz" },
     { n: 35, r: 20, c: 13, w: "HAZAN", d: 1, q: "Benim sürekli gidelim dediğim yer (... bahçe)" }, 
     { n: 36, r: 20, c: 15, w: "MEŞK", d: 1, q: "Yanan cafe ye benim söylediğim isim" }, 
-    { n: 37, r: 23, c: 13, w: "AŞKIM", d: 0, q: "Senin bana kullandığın tabir" }
+    { n: 37, r: 23, c: 13, w: "AŞKIM", d: 0, q: "Senin bana kullandığın tabir" },
+    { n: 38, r: 13, c: 23, w: "LALE", d: 1, q: "Senin bana yanına papatya yakışır dediğin çiçek" }
 ];
 
 // İYİ Kİ BENİMLESİN (15 Harf) ŞİFRESİ TANIMLAMALARI
