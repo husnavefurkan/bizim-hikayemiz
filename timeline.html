@@ -4,24 +4,103 @@
     <meta charset="UTF-8">
     <title>Zaman Tüneli</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
     <script>
-        // Eğer site kilidi açılmadıysa, kişiyi zorla login.html'e geri gönder
+        // Site kilidi açılmadıysa login ekranına at
         if (sessionStorage.getItem('siteUnlocked') !== 'true') {
             window.location.href = "login.html";
         }
     </script>
-</head>
-<body>
+
     <nav>
         <a href="index.html">Ana Sayfa</a>
         <a href="timeline.html" class="active">Zaman Tüneli</a>
         <a href="bulmaca.html">Bulmaca</a>
         <a href="akrostis.html">Şiir</a>
     </nav>
-    <div class="container hero">
-        <h2>Zaman Tüneli</h2>
-        <p style="color: #666; font-size: 1.5rem;"> Anılarımızı Birlikte</p>
-        <p style="color: #666; font-size: 1.5rem;">Buraya Ekleyebiliriz...</p>
+
+    <div class="timeline-page">
+        <div class="timeline-intro">
+            <h2>BİZİM İZLERİMİZ</h2>
+            <p>Sevgilim, ben artık "ben" diye günlük yazmaktan sıkıldım. Burası artık <span class="highlight-text">"biz"</span> diye günlük yazabileceğimiz bir alan.<br>Bu fotoğraf arşivi ise bizim bu dijital dünyadaki sonsuz izlerimiz olacak...</p>
+        </div>
+
+        <div class="tab-controls">
+            <button class="tab-btn active" onclick="switchTab('gunluk', this)">Günlük</button>
+            <button class="tab-btn" onclick="switchTab('galeri', this)">Galeri</button>
+        </div>
+
+        <div id="gunluk" class="tab-content active">
+            <div class="diary-entry">
+                <span class="diary-date">8 Şubat</span>
+                <h3 class="diary-title">Hikayemizin Başladığı Gün</h3>
+                <p class="diary-text">Her şey o gün değişti. Hayatıma girdiğin an, sıradan bir gün olmaktan çıkıp kalbime kazınan bir milat oldu...</p>
+            </div>
+            
+            <div class="diary-entry">
+                <span class="diary-date">14 Şubat</span>
+                <h3 class="diary-title">Ganita...</h3>
+                <p class="diary-text">İlk başbaşa buluşmamız, o heyecan, o ilk bakışmalar... Yanında zamanın nasıl geçtiğini hiç anlamıyorum.</p>
+            </div>
+            </div>
+
+        <div id="galeri" class="tab-content">
+            <div class="photo-grid" id="driveGallery">
+                <p style="color:#aaa; text-align:center; width:100%; font-family: 'Montserrat', sans-serif;">Anılarımız yükleniyor...</p>
+            </div>
+        </div>
     </div>
+
+    <script>
+        // --- SEKMELER ARASI GEÇİŞ ---
+        function switchTab(tabId, btnElement) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            btnElement.classList.add('active');
+
+            // Galeriye ilk tıklandığında fotoğrafları Drive'dan çek
+            const grid = document.getElementById('driveGallery');
+            if(tabId === 'galeri' && grid.innerHTML.includes('yükleniyor')) {
+                fotograflariGetir();
+            }
+        }
+
+        // --- GOOGLE DRIVE'DAN FOTOĞRAF ÇEKME SİSTEMİ ---
+        // Apps Script'ten aldığın linki buraya yapıştıracaksın:
+        const API_URL = "https://script.google.com/macros/s/AKfycbx6JzS7JybUCd1nkC6Vb030cPvmZQZkjJk-RZXFD0y2WMQuT8ieRSV3gCPvTZugX9Mgag/exec";
+
+        async function fotograflariGetir() {
+            const grid = document.getElementById('driveGallery');
+            try {
+                const response = await fetch(API_URL);
+                const fotolar = await response.json();
+                
+                grid.innerHTML = ''; // Yükleniyor yazısını sil
+                
+                if (fotolar.length === 0) {
+                    grid.innerHTML = '<p style="color:#aaa;">Henüz buraya bir anı eklenmemiş, hadi Drive klasörüne bir fotoğraf yükleyelim!</p>';
+                    return;
+                }
+
+                fotolar.forEach(foto => {
+                    const imgUrl = `https://drive.google.com/uc?export=view&id=${foto.id}`;
+                    const card = document.createElement('div');
+                    card.className = 'photo-card';
+                    card.innerHTML = `
+                        <img src="${imgUrl}" alt="${foto.name}">
+                        <p>Anılarımızdan biri</p>
+                    `;
+                    grid.appendChild(card);
+                });
+            } catch (error) {
+                grid.innerHTML = '<p style="color:#ff4d4d;">Fotoğraflara şu an ulaşılamıyor, internet bağlantını kontrol edip tekrar dener misin?</p>';
+                console.error(error);
+            }
+        }
+    </script>
 </body>
 </html>

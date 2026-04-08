@@ -9,9 +9,9 @@
 
     <div class="login-container">
         <h2>BİZİM HİKAYEMİZ</h2>
-        <p>İçeri girmek için o özel tarihi tuşla...<br><span style="font-size: 0.8rem; color: #666;">(Örn: 08.02 veya 0802)</span></p>
+        <p>İçeri girmek için o özel tarihi tuşla...<br><span style="font-size: 0.8rem; color: #666;">(GG.AA.YYYY)</span></p>
         
-        <input type="text" id="passwordInput" placeholder="GG.AA" autocomplete="off">
+        <input type="text" id="passwordInput" placeholder="GG.AA.YYYY" autocomplete="off">
         <button onclick="checkPassword()">Kilidi Aç</button>
         
         <p id="errorMsg" class="error-msg">Yanlış tarih, biraz daha düşün sevgilim...</p>
@@ -30,7 +30,7 @@
             const pass = document.getElementById('passwordInput').value.trim();
             
             // KABUL EDİLECEK ŞİFRELER (Burayı kendi tarihine göre düzenle)
-            if(pass === "08.02" || pass === "0802" || pass === "8 Şubat") {
+            if(pass === "08.02.2026" || pass === "08022026" || pass === "8 Şubat 2026") {
                 // Şifre doğruysa tarayıcıya "kilit açıldı" bilgisini kaydet
                 sessionStorage.setItem('siteUnlocked', 'true');
                 // Ana sayfaya yönlendir

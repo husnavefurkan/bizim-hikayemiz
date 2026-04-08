@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:wght@200;300;400;600&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
 body { background: #0a0a0a; color: #ffffff; overflow-x: hidden; }
@@ -219,3 +219,32 @@ nav a:hover, nav a.active { color: #ff4d4d; text-shadow: 0 0 10px rgba(255, 77, 
     font-size: 0.9rem;
     animation: fadeInDown 0.3s ease;
 }
+
+/* === ZAMAN TÜNELİ (GÜNLÜK & GALERİ) EKLENTİLERİ === */
+.timeline-page { padding: 150px 20px 80px; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+.timeline-intro { text-align: center; margin-bottom: 40px; animation: fadeInDown 1.5s ease; }
+.timeline-intro h2 { font-weight: 200; letter-spacing: 8px; color: #fff; margin-bottom: 15px; }
+.timeline-intro p { color: #aaa; font-size: 1.1rem; line-height: 1.8; font-weight: 300; }
+.highlight-text { color: #ff4d4d; font-style: italic; font-family: 'Caveat', cursive; font-size: 1.5rem; }
+
+/* Sekme Butonları */
+.tab-controls { display: flex; gap: 20px; margin-bottom: 40px; background: rgba(255,255,255,0.02); padding: 10px 20px; border-radius: 30px; border: 1px solid #222; }
+.tab-btn { background: transparent; border: none; color: #666; font-size: 1.1rem; padding: 10px 30px; border-radius: 20px; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+.tab-btn:hover { color: #fff; }
+.tab-btn.active { background: #ff4d4d; color: #fff; box-shadow: 0 0 15px rgba(255,77,77,0.3); }
+.tab-content { display: none; width: 100%; animation: fadeInUp 0.5s ease; }
+.tab-content.active { display: block; }
+
+/* Günlük Tasarımı */
+.diary-entry { background: rgba(17, 17, 17, 0.6); border-left: 4px solid #ff4d4d; padding: 25px 30px; margin-bottom: 25px; border-radius: 0 10px 10px 0; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: transform 0.3s; }
+.diary-entry:hover { transform: translateX(5px); }
+.diary-date { position: absolute; top: -12px; right: 20px; background: #ff4d4d; color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; }
+.diary-title { font-size: 1.3rem; color: #fff; margin-bottom: 10px; font-weight: 400; }
+.diary-text { font-family: 'Caveat', cursive; font-size: 1.6rem; color: #ccc; line-height: 1.5; letter-spacing: 1px; }
+
+/* Galeri Tasarımı */
+.photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
+.photo-card { background: #111; padding: 15px; border-radius: 8px; border: 1px solid #222; text-align: center; transition: 0.4s; }
+.photo-card:hover { transform: translateY(-10px); border-color: #ff4d4d; box-shadow: 0 10px 20px rgba(255,77,77,0.1); }
+.photo-card img { width: 100%; height: 250px; object-fit: cover; border-radius: 5px; margin-bottom: 15px; }
+.photo-card p { font-family: 'Caveat', cursive; color: #ff4d4d; font-size: 1.5rem; margin: 0; }
