@@ -13,6 +13,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <audio id="bgMusic" loop>
+        <source src="sarki.mp3" type="audio/mpeg"> </audio>
+    
+    <button id="musicToggle" class="music-btn" onclick="toggleMusic()">
+        🎵 Müziği Aç
+    </button>
     <nav>
         <a href="index.html">Ana Sayfa</a>
         <a href="timeline.html">Zaman Tüneli</a>
@@ -37,6 +43,35 @@
     </div>
 
     <script>
+        // --- MÜZİK KONTROL SİSTEMİ ---
+        const music = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicToggle');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.innerHTML = "🔇 Müziği Aç";
+                musicBtn.classList.remove('playing');
+            } else {
+                music.play();
+                musicBtn.innerHTML = "🔊 Müziği Kapat";
+                musicBtn.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Sayfa açıldığında otomatik çalmayı dener. 
+        // Tarayıcı engellerse buton "Müziği Aç" olarak bekler.
+        window.addEventListener('load', () => {
+            music.play().then(() => {
+                isPlaying = true;
+                musicBtn.innerHTML = "🔊 Müziği Kapat";
+                musicBtn.classList.add('playing');
+            }).catch(() => {
+                console.log("Tarayıcı otomatik sese izin vermedi, butona basılması bekleniyor.");
+            });
+        });
         // KENDİ ŞİİRİNİ BURAYA EKLEMELİSİN
         const poemLines = [
             "Hüsn-ü mutlak bir tecelliyle gönül ufkumu kuşatan, <br>varlığımı mana ile yoğuran o eşsiz ve semavî lütufsun.", 
