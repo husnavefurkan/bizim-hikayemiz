@@ -24,7 +24,7 @@
     <div class="timeline-page">
         <div class="timeline-intro">
             <h2>BİZİM İZLERİMİZ</h2>
-            <p>Sevgilim, ben artık "ben" diye günlük yazmaktan sıkıldım. Burası artık <span class="highlight-text">"biz"</span> diye günlük yazabileceğimiz bir alan.<br>Bu fotoğraf arşivi ise bizim bu dijital dünyadaki sonsuz izlerimiz olacak...</p>
+            <p>Sevgilim, ben artık "ben" diye günlük yazmaktan sıkıldım. Burası artık <span class="highlight-text">"biz"</span>  diye günlük yazabileceğimiz bir alan.<br>Bu fotoğraf arşivi ise bizim bu dijital dünyadaki sonsuz izlerimiz olacak...</p>
         </div>
 
         <div class="tab-controls">
@@ -87,15 +87,16 @@
                 }
 
                 fotolar.forEach(foto => {
-                    const imgUrl = `https://drive.google.com/uc?export=view&id=${foto.id}`;
+                    // Artık karmaşık uc?export linkine gerek yok, foto.url direkt uyumlu resmi veriyor
                     const card = document.createElement('div');
                     card.className = 'photo-card';
                     card.innerHTML = `
-                        <img src="${imgUrl}" alt="${foto.name}">
+                        <img src="${foto.url}" alt="${foto.name}">
                         <p>Anılarımızdan biri</p>
                     `;
                     grid.appendChild(card);
                 });
+                
             } catch (error) {
                 grid.innerHTML = '<p style="color:#ff4d4d;">Fotoğraflara şu an ulaşılamıyor, internet bağlantını kontrol edip tekrar dener misin?</p>';
                 console.error(error);
