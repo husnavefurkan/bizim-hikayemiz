@@ -53,7 +53,7 @@ const pinkDefinitions = [
     { w: 5, i: 6, msg: 3 },   // İ (ERKENCİKUŞ - 7. Harf)
     { w: 21, i: 5, msg: 4 },  // K (HALBUKİ - 6. Harf)
     { w: 9, i: 3, msg: 5 },   // İ (GANİTA - 4. Harf)
-    { w: 18, i: 0, msg: 6 },  // B (BAVUL - 1. Harf)
+    { w: 4, i: 0, msg: 6 },  // B (BETÜL - 1. Harf)
     { w: 32, i: 1, msg: 7 },  // E (FENER - 2. Harf)
     { w: 19, i: 6, msg: 8 },  // N (DOĞUKAN - 7. Harf)
     { w: 24, i: 1, msg: 9 },  // İ (SİMGE - 2. Harf)
