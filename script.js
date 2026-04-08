@@ -37,7 +37,7 @@ const words = [
     { n: 29, r: 17, c: 18, w: "TOPUZ", d: 1, q: "Seni ilk gördüğümde saçın nasıldı" },
     { n: 30, r: 18, c: 10, w: "NAZAR", d: 0, q: "Arabamın ismi (... boncuğu)" },
     { n: 31, r: 18, c: 16, w: "ZOOTOPİA", d: 0, q: "İlk birlikte izlediğimiz film" },
-    { n: 32, r: 19, c: 4, w: "FENER", d: 1, q: "Beşirli sahilin sonunda nereye yürüdük" },
+    { n: 32, r: 19, c: 4, w: "FENER", d: 0, q: "Beşirli sahilin sonunda nereye yürüdük" },
     { n: 33, r: 19, c: 7, w: "ELBETTE", d: 1, q: "Benim kullanmama güldüğün bir kelime" },
     { n: 34, r: 20, c: 9, w: "OYUNHAMURU", d: 0, q: "İlk aktivitemiz" },
     { n: 35, r: 20, c: 13, w: "HAZAN", d: 1, q: "Benim sürekli gidelim dediğim yer (... bahçe)" }, 
