@@ -62,3 +62,76 @@ nav a:hover, nav a.active { color: #ff4d4d; text-shadow: 0 0 10px rgba(255, 77, 
 
 @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ŞİİR SAYFASI ÖZEL TASARIMI */
+.poem-page {
+    justify-content: flex-start;
+    padding-top: 180px; /* Menünün altında kalmaması için */
+}
+
+.letters-container {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 50px;
+    justify-content: center;
+}
+
+.letter-box {
+    width: 85px;
+    height: 85px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #333;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    color: #fff;
+    font-family: 'Caveat', cursive; /* El yazısı fontu */
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    user-select: none;
+}
+
+.letter-box:hover {
+    transform: translateY(-5px);
+    border-color: #ff4d4d;
+    color: #ff4d4d;
+    background: rgba(255, 77, 77, 0.05);
+    box-shadow: 0 10px 20px rgba(255, 77, 77, 0.2);
+}
+
+.letter-box.active-letter {
+    border-color: #ff4d4d;
+    color: #ff4d4d;
+    background: rgba(255, 77, 77, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 77, 77, 0.3);
+}
+
+.poem-line-display {
+    min-height: 100px;
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.poem-line-display p {
+    font-size: 2.5rem;
+    color: #ff4d4d;
+    font-family: 'Caveat', cursive; /* Mısralar da el yazısı */
+    letter-spacing: 2px;
+    line-height: 1.4;
+    text-shadow: 0 0 15px rgba(255, 77, 77, 0.2);
+}
+
+.poem-line-display .placeholder-text {
+    color: #666;
+    font-size: 1.1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-shadow: none;
+}

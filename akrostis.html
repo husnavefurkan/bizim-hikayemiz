@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Akrostiş - Hüsna</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="timeline.html">Zaman Tüneli</a>
+        <a href="bulmaca.html">Bulmaca</a>
+        <a href="akrostis.html" class="active">Şiir</a>
+    </nav>
+
+    <div class="hero poem-page">
+        <h2 style="font-weight: 200; letter-spacing: 6px; color: #fff; margin-bottom: 60px; text-transform: uppercase;">Senin İçin</h2>
+        
+        <div class="letters-container">
+            <div class="letter-box" onclick="showLine(0)">H</div>
+            <div class="letter-box" onclick="showLine(1)">Ü</div>
+            <div class="letter-box" onclick="showLine(2)">S</div>
+            <div class="letter-box" onclick="showLine(3)">N</div>
+            <div class="letter-box" onclick="showLine(4)">A</div>
+        </div>
+
+        <div class="poem-line-display" id="poemDisplay">
+            <p class="placeholder-text">Mısrayı okumak için bir harfe dokun...</p>
+        </div>
+    </div>
+
+    <script>
+        // KENDİ ŞİİRİNİ BURAYA EKLEMELİSİN
+        const poemLines = [
+            "H... (Buraya 1. mısrayı yaz)", 
+            "Ü... (Buraya 2. mısrayı yaz)",
+            "S... (Buraya 3. mısrayı yaz)",
+            "N... (Buraya 4. mısrayı yaz)",
+            "A... (Buraya 5. mısrayı yaz)"
+        ];
+
+        function showLine(index) {
+            const display = document.getElementById('poemDisplay');
+            
+            // Önce mevcut metni görünmez yapıp efekti sıfırlıyoruz
+            display.style.opacity = 0;
+            display.style.transform = 'translateY(10px)';
+            
+            // Kısa bir süre sonra yeni metni koyup yavaşça yukarı doğru görünür yapıyoruz
+            setTimeout(() => {
+                display.innerHTML = `<p>${poemLines[index]}</p>`;
+                display.style.opacity = 1;
+                display.style.transform = 'translateY(0)';
+            }, 200);
+
+            // Tıklanan kutucuğu kırmızı renk ile vurguluyoruz
+            document.querySelectorAll('.letter-box').forEach((box, i) => {
+                if (i === index) {
+                    box.classList.add('active-letter');
+                } else {
+                    box.classList.remove('active-letter');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
