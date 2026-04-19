@@ -14,16 +14,19 @@
 </head>
 <body>
     <audio id="bgMusic" loop>
-        <source src="sarki.mp3" type="audio/mpeg"> </audio>
+        <source src="sarki.mp3" type="audio/mpeg"> 
+    </audio>
     
     <button id="musicToggle" class="music-btn" onclick="toggleMusic()">
         🎵 Müziği Aç
     </button>
+    
     <nav>
         <a href="index.html">Ana Sayfa</a>
         <a href="timeline.html">Zaman Tüneli</a>
         <a href="bulmaca.html">Bulmaca</a>
-        <a href="akrostis.html" class="active">Şiir</a>
+        <a href="akrostis.html" class="active">Akrostiş</a>
+        <a href="siir.html">Şiir</a>
     </nav>
 
     <div class="hero poem-page">
@@ -72,7 +75,8 @@
                 console.log("Tarayıcı otomatik sese izin vermedi, butona basılması bekleniyor.");
             });
         });
-        // KENDİ ŞİİRİNİ BURAYA EKLEMELİSİN
+
+        // KENDİ ŞİİRİN
         const poemLines = [
             "Hüsn-ü mutlak bir tecelliyle gönül ufkumu kuşatan, <br>varlığımı mana ile yoğuran o eşsiz ve semavî lütufsun.", 
             "Ülfetinle harmanlanan şu mahzun sinemin, <br>sükûna erdiği o rahmanî ve paha biçilmez ümransın.",

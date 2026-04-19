@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Sana Dair</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script>
+        if (sessionStorage.getItem('siteUnlocked') !== 'true') {
+            window.location.href = "login.html";
+        }
+    </script>
+
+    <nav>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="timeline.html">Zaman Tüneli</a>
+        <a href="bulmaca.html">Bulmaca</a>
+        <a href="akrostis.html">Akrostiş</a>
+        <a href="siir.html" class="active">Şiir</a>
+    </nav>
+
+    <audio id="bgMusic" loop>
+        <source src="sarki.mp3" type="audio/mpeg"> </audio>
+    
+    <button id="musicToggle" class="music-btn" onclick="toggleMusic()">
+        🎵 Müziği Aç
+    </button>
+
+    <div class="custom-poem-page">
+        <div class="poem-container">
+            <h2 class="poem-title">Sana Dair...</h2>
+            
+            <div class="poem-intro">
+                <p>Bazen içimdeki duyguları sana anlatmak için sıradan kelimeler yetersiz kalıyor sevgilim. Hayatıma kattığın o eşsiz güzelliği, ruhumda açtığın çiçekleri ve bana hissettirdiklerini ancak mısraların ardına sığınarak dile getirebilirim. Bu dizeler, sana olan aşkımın kelimelere dökülmüş en saf hali...</p>
+            </div>
+
+            <div class="poem-text">
+                <p>"Gün eksilmesin penceremden" derdim eskiden,<br>
+                Şimdi tek dileğim, sen eksilme ömrümden.<br>
+                Aynalarda aradığım o bahar sabahı sendin,<br>
+                Bir gülüşünle içimdeki bütün kışları yendin.</p>
+
+                <p>Zaman su gibi akıp giderken ellerimizden,<br>
+                Korkmuyorum artık o gölgesiz gecelerden.<br>
+                Senin sesinle şenleniyor en kuytu köşeler,<br>
+                Gözlerinde uyanıyor sararmış menekşeler.</p>
+
+                <p>Hüsna, can suyu oldun sen benim yüreğime,<br>
+                Ne güzel yakıştın bu şairin garip kaderine.<br>
+                Bırak saatler dursun, takvimler hiç dönmesin,<br>
+                Yeter ki o sımsıcak ellerin üşümesin.</p>
+            </div>
+            
+            <div class="poem-note">
+                <p>"Seni ne kadar çok sevdiğimi kelimelere dökmek zor olsa da, bu mısralar sadece bir başlangıç... İyi ki benimlesin."</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicToggle');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.innerHTML = "🔇 Müziği Aç";
+                musicBtn.classList.remove('playing');
+            } else {
+                music.play();
+                musicBtn.innerHTML = "🔊 Müziği Kapat";
+                musicBtn.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Sayfa açıldığında otomatik çalmayı dener
+        window.addEventListener('load', () => {
+            music.play().then(() => {
+                isPlaying = true;
+                musicBtn.innerHTML = "🔊 Müziği Kapat";
+                musicBtn.classList.add('playing');
+            }).catch(() => {
+                console.log("Tarayıcı otomatik sese izin vermedi, butona basılması bekleniyor.");
+            });
+        });
+    </script>
+</body>
+</html>
