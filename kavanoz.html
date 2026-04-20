@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Aşk Kavanozu</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script>
+        if (sessionStorage.getItem('siteUnlocked') !== 'true') {
+            window.location.href = "login.html";
+        }
+    </script>
+
+    <nav>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="timeline.html">Zaman Tüneli</a>
+        <a href="bulmaca.html">Bulmaca</a>
+        <a href="akrostis.html">Akrostiş</a>
+        <a href="siir.html">Şiir</a>
+        <a href="kavanoz.html" class="active">Kavanoz</a>
+    </nav>
+
+    <div class="jar-page">
+        <div class="jar-intro">
+            <h2>AŞK KAVANOZU</h2>
+            <p>Bazen sana olan sevgimi tek bir cümleye sığdırmak zor oluyor.<br>Canın her sıkıldığında, beni her özlediğinde bu kalbe dokun...</p>
+        </div>
+
+        <div class="heart-jar" onclick="cekNot()">❤️</div>
+
+        <div class="note-display" id="noteDisplay">
+            <p class="placeholder-text">Kavanozdan bir not çekmek için kalbe dokun sevgilim...</p>
+        </div>
+    </div>
+
+    <script>
+        // KAVANOZDAKİ NOTLAR (İstediğin kadar ekleyip silebilirsin)
+        const notlar = [
+            "Gülüşünle içimdeki bütün kışları yendiğin için...",
+            "Bana dünyanın en şanslı insanı olduğumu hissettirdiğin için...",
+            "Gözlerime her baktığında zamanı durdurduğun için...",
+            "Sesini duyduğum an bütün dertlerimi unutturduğun için...",
+            "O sımsıcak ellerinle ellerimi hiç bırakmadığın için...",
+            "En saçma şakalarıma bile o güzel kahkahanla güldüğün için...",
+            "Yanında tamamen kendim olabildiğim için...",
+            "Birlikte kurduğumuz hayallerin güzelliği için...",
+            "Sadece varlığınla bile bana huzur verdiğin için...",
+            "Benim o kullanmama güldüğün kelimeleri bile sevdiğin için...",
+            "Ganita'daki o ilk buluşmamızdaki heyecanı bana her gün yaşattığın için...",
+            "Aynalarda aradığım o bahar sabahı olduğun için...",
+            "Her yeni güne senin adınla uyanma sebebi olduğun için...",
+            "Kızdığında bile dünyanın en tatlı insanı olduğun için...",
+            "İyi ki hayatımdasın, seni her şeyden çok seviyorum."
+        ];
+
+        let sonNotIndex = -1;
+
+        function cekNot() {
+            const display = document.getElementById('noteDisplay');
+            const p = display.querySelector('p');
+            
+            // Efekti başlatmak için şeffaf yap
+            display.style.opacity = 0;
+            display.style.transform = 'translateY(10px)';
+
+            setTimeout(() => {
+                // Rastgele yeni bir not seç (aynı notun üst üste gelmesini engelle)
+                let yeniIndex;
+                do {
+                    yeniIndex = Math.floor(Math.random() * notlar.length);
+                } while (yeniIndex === sonNotIndex && notlar.length > 1);
+                
+                sonNotIndex = yeniIndex;
+
+                // Yeni notu ekrana bas
+                p.className = 'drawn-note';
+                p.innerHTML = notlar[yeniIndex];
+
+                // Ekranda yavaşça belirsin
+                display.style.opacity = 1;
+                display.style.transform = 'translateY(0)';
+            }, 300); // 0.3 saniye bekleyip metni değiştirir
+        }
+    </script>
+</body>
+</html>

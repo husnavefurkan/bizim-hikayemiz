@@ -363,3 +363,91 @@ nav a:hover, nav a.active { color: #ff4d4d; text-shadow: 0 0 10px rgba(255, 77, 
     font-style: italic;
     letter-spacing: 1px;
 }
+
+/* === AŞK KAVANOZU SAYFASI TASARIMI === */
+.jar-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 150px 20px 80px;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.jar-intro {
+    margin-bottom: 50px;
+    animation: fadeInDown 1.5s ease;
+}
+
+.jar-intro h2 {
+    font-weight: 200;
+    letter-spacing: 10px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.jar-intro p {
+    color: #aaa;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+.heart-jar {
+    font-size: 5rem;
+    cursor: pointer;
+    margin-bottom: 40px;
+    user-select: none;
+    animation: heartbeat 2s infinite;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(0 0 15px rgba(255, 77, 77, 0.4));
+}
+
+.heart-jar:hover {
+    animation: none;
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 30px rgba(255, 77, 77, 0.8));
+}
+
+.note-display {
+    max-width: 650px;
+    width: 100%;
+    background: rgba(17, 17, 17, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid #333;
+    border-radius: 15px;
+    padding: 40px;
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.note-display p.placeholder-text {
+    font-family: 'Montserrat', sans-serif;
+    color: #666;
+    font-size: 1.1rem;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+.note-display p.drawn-note {
+    font-family: 'Caveat', cursive;
+    color: #ff4d4d;
+    font-size: 2.2rem;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255, 77, 77, 0.1);
+}
+
+/* Kalp Atış Animasyonu */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
+    60% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
