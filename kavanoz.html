@@ -36,23 +36,23 @@
     </div>
 
     <script>
-        // KAVANOZDAKİ NOTLAR (İstediğin kadar ekleyip silebilirsin)
+        // KAVANOZDAKİ NOTLAR (Başına otomatik "Seni seviyorum çünkü..." eklenecek)
         const notlar = [
-            "Gülüşünle içimdeki bütün kışları yendiğin için...",
-            "Bana dünyanın en şanslı insanı olduğumu hissettirdiğin için...",
-            "Gözlerime her baktığında zamanı durdurduğun için...",
-            "Sesini duyduğum an bütün dertlerimi unutturduğun için...",
-            "O sımsıcak ellerinle ellerimi hiç bırakmadığın için...",
-            "En saçma şakalarıma bile o güzel kahkahanla güldüğün için...",
-            "Yanında tamamen kendim olabildiğim için...",
-            "Birlikte kurduğumuz hayallerin güzelliği için...",
-            "Sadece varlığınla bile bana huzur verdiğin için...",
-            "Benim o kullanmama güldüğün kelimeleri bile sevdiğin için...",
-            "Ganita'daki o ilk buluşmamızdaki heyecanı bana her gün yaşattığın için...",
-            "Aynalarda aradığım o bahar sabahı olduğun için...",
-            "Her yeni güne senin adınla uyanma sebebi olduğun için...",
-            "Kızdığında bile dünyanın en tatlı insanı olduğun için...",
-            "İyi ki hayatımdasın, seni her şeyden çok seviyorum."
+            "gülüşünle içimdeki bütün kışları yendin.",
+            "bana dünyanın en şanslı insanı olduğumu hissettiriyorsun.",
+            "gözlerime her baktığında zamanı durduruyorsun.",
+            "sesini duyduğum an bütün dertlerimi unutuyorum.",
+            "o sımsıcak ellerinle ellerimi hiç bırakmıyorsun.",
+            "en saçma şakalarıma bile o güzel kahkahanla gülüyorsun.",
+            "yanında tamamen kendim olabiliyorum.",
+            "birlikte kurduğumuz hayallerin güzelliğine inanıyorum.",
+            "sadece varlığınla bile bana huzur veriyorsun.",
+            "benim o kullanmama güldüğün kelimeleri bile seviyorsun.",
+            "Ganita'daki o ilk buluşmamızdaki heyecanı bana her gün yaşatıyorsun.",
+            "aynalarda aradığım o bahar sabahı sensin.",
+            "her yeni güne senin adınla uyanıyorum.",
+            "kızdığında bile dünyanın en tatlı insanı oluyorsun.",
+            "iyi ki hayatımdasın, sen benim her şeyimsin."
         ];
 
         let sonNotIndex = -1;
@@ -66,7 +66,7 @@
             display.style.transform = 'translateY(10px)';
 
             setTimeout(() => {
-                // Rastgele yeni bir not seç (aynı notun üst üste gelmesini engelle)
+                // Rastgele yeni bir not seç
                 let yeniIndex;
                 do {
                     yeniIndex = Math.floor(Math.random() * notlar.length);
@@ -74,14 +74,14 @@
                 
                 sonNotIndex = yeniIndex;
 
-                // Yeni notu ekrana bas
+                // Yeni notu ekrana bas ("Seni seviyorum çünkü..." başlığıyla birlikte)
                 p.className = 'drawn-note';
-                p.innerHTML = notlar[yeniIndex];
+                p.innerHTML = `<span style="font-size: 1.2rem; color: #aaa; font-family: 'Montserrat', sans-serif; font-style: italic; letter-spacing: 2px;">"Seni seviyorum çünkü..."</span><br><br>${notlar[yeniIndex]}`;
 
                 // Ekranda yavaşça belirsin
                 display.style.opacity = 1;
                 display.style.transform = 'translateY(0)';
-            }, 300); // 0.3 saniye bekleyip metni değiştirir
+            }, 300);
         }
     </script>
 </body>
